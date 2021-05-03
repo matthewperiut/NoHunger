@@ -1,12 +1,16 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.fabricmc.example.mixin",
+  "package": "net.Slainlight.NoHunger.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+
+    "MixinPlayerEntity",
+    "MixinItem",
+    "MixinItemSettings"
   ],
   "client": [
-    "ExampleMixin"
+    "MixinInGameHud"
   ],
   "injectors": {
     "defaultRequire": 1
