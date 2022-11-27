@@ -5,7 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 
 public class NoHungerManager extends HungerManager
 {
@@ -14,7 +14,8 @@ public class NoHungerManager extends HungerManager
 
     private final PlayerEntity player;
 
-    public NoHungerManager(PlayerEntity player) {
+    public NoHungerManager(PlayerEntity player)
+    {
         this.player = player;
     }
 
@@ -36,23 +37,26 @@ public class NoHungerManager extends HungerManager
     }
 
     @Override
-    public void update(PlayerEntity playerEntity) {
-        // NO-OP
+    public void update(PlayerEntity player) {
+
     }
 
     @Override
-    public void fromTag(CompoundTag tag) {
-        // NO-OP
+    public void readNbt(NbtCompound nbt)
+    {
+
     }
 
     @Override
-    public void toTag(CompoundTag tag) {
-        // NO-OP
+    public void writeNbt(NbtCompound nbt)
+    {
+
     }
 
     @Override
-    public int getFoodLevel() {
-        return MAX_FOOD_LEVEL;
+    public int getFoodLevel()
+    {
+        return 1;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class NoHungerManager extends HungerManager
 
     @Override
     public float getSaturationLevel() {
-        return MAX_SATURATION_LEVEL;
+        return -5;
     }
 
     @Override
@@ -74,7 +78,8 @@ public class NoHungerManager extends HungerManager
     }
 
     @Override
-    public void setSaturationLevelClient(float saturationLevel) {
-        // NO-OP
+    public void setSaturationLevel(float saturationLevel)
+    {
+
     }
 }

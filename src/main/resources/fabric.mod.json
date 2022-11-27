@@ -6,9 +6,14 @@
   "name": "No Hunger",
   "description": "This mod lets you play without worrying about hunger!\nWhen you eat you replenish HP",
   "authors": [
-    "Slainlight",
+    "Slainlite",
     "MrIbby"
   ],
+
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
 
   "license": "MIT",
   "icon": "assets/nohunger/icon.png",
@@ -29,9 +34,7 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "*"
-  },
-  "suggests": {
-    "another-mod": "*"
+    "minecraft": "*",
+    "cloth-config2": "*"
   }
 }
