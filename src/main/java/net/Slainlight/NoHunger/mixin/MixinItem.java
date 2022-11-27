@@ -17,7 +17,6 @@ public class MixinItem
     private void onGetMaxUseTime(ItemStack itemStack, CallbackInfoReturnable<Integer> info)
     {
         NoHungerConfig config = AutoConfig.getConfigHolder(NoHungerConfig.class).getConfig();
-
         if (config.shouldInstantEat()) {
             if (itemStack.getItem().isFood()) {
                 // Food items don't work with 0, so 1 is the next best thing.

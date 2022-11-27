@@ -13,6 +13,5 @@ public class Main implements ModInitializer {
 			AutoConfig.register(NoHungerConfig.class, JanksonConfigSerializer::new);
 			NoHungerConfig.Register();
 		}
-		System.out.println("[NoHunger] Welcome to Alpha! haha");
 	}
 }

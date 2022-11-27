@@ -9,16 +9,17 @@
     "Slainlight",
     "MrIbby"
   ],
-  "contact": {
-  },
 
-  "license": "CC0-1.0",
+  "license": "MIT",
   "icon": "assets/nohunger/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
       "net.Slainlight.NoHunger.Main"
+    ],
+    "modmenu": [
+      "net.Slainlight.NoHunger.NoHungerModMenu"
     ]
   },
   "mixins": [

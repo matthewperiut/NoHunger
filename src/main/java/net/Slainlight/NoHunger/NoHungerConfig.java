@@ -3,15 +3,17 @@ package net.Slainlight.NoHunger;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 
-@Config(name="NoHunger")
+@Config(name="nohunger")
 public class NoHungerConfig implements ConfigData
 {
 
     boolean InstantEat = false;
     boolean makeFoodUnstackable = false;
 
+    @ConfigEntry.Gui.Excluded
     static boolean Registered = false;
     public static void Register()
     {
