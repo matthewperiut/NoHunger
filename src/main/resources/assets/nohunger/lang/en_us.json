@@ -1,4 +1,6 @@
 {
+  "text.autoconfig.nohunger.title": "No Hunger Configs",
   "text.autoconfig.nohunger.option.InstantEat": "Eat Instantly",
-  "text.autoconfig.nohunger.option.makeFoodUnstackable": "Unstackable Food (Restart)"
+  "text.autoconfig.nohunger.option.makeFoodUnstackable": "Unstackable Food (restart)",
+  "text.autoconfig.nohunger.option.showExp": "Show EXP Bar w/o sneak"
 }

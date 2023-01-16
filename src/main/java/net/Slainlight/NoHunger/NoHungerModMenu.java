@@ -10,4 +10,5 @@ public class NoHungerModMenu implements ModMenuApi
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parent -> AutoConfig.getConfigScreen(NoHungerConfig.class, parent).get();
     }
+
 }

@@ -4,7 +4,6 @@
   "package": "net.Slainlight.NoHunger.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-
     "MixinPlayerEntity",
     "MixinItem",
     "MixinItemSettings"

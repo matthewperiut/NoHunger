@@ -9,9 +9,6 @@ import net.minecraft.nbt.NbtCompound;
 
 public class NoHungerManager extends HungerManager
 {
-    private static final int MAX_FOOD_LEVEL = 20;
-    private static final float MAX_SATURATION_LEVEL = MAX_FOOD_LEVEL;
-
     private final PlayerEntity player;
 
     public NoHungerManager(PlayerEntity player)
@@ -56,7 +53,7 @@ public class NoHungerManager extends HungerManager
     @Override
     public int getFoodLevel()
     {
-        return 1;
+        return 10;
     }
 
     @Override
@@ -69,7 +66,7 @@ public class NoHungerManager extends HungerManager
 
     @Override
     public float getSaturationLevel() {
-        return -5;
+        return 0;
     }
 
     @Override

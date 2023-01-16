@@ -16,7 +16,8 @@ public class MixinPlayerEntity
     protected HungerManager hungerManager;
 
     @Inject(at = @At("RETURN"), method = "<init>")
-    private void onInit(CallbackInfo info) {
+    private void onInit(CallbackInfo info)
+    {
         hungerManager = new NoHungerManager((PlayerEntity) (Object) this);
     }
 }
