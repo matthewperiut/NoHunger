@@ -46,6 +46,8 @@ public abstract class MixinInGameHud
         int v_offset = getCameraPlayer().isInSneakingPose() ? 0 : 7;
         if (config.shouldShowExp())
             v_offset = 0;
+        if (config.shouldHideExp())
+            v_offset = 7;
 
         // Moves the armor bar down to where the hunger bar was.
         if (y == 191 - raised)
@@ -74,7 +76,7 @@ public abstract class MixinInGameHud
     @Redirect(method = "drawHeart", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V"))
     private void onDrawHeartTexture(InGameHud instance, MatrixStack matrixStack, int x, int y, int u, int v, int e, int f)
     {
-        if(getCameraPlayer().isInSneakingPose() || config.shouldShowExp())
+        if((getCameraPlayer().isInSneakingPose() || config.shouldShowExp()) && !config.shouldHideExp())
             instance.drawTexture(matrixStack, x, y, u, v, e, f);
         else
             instance.drawTexture(matrixStack, x, y+7, u, v, e, f);
@@ -83,6 +85,9 @@ public abstract class MixinInGameHud
     @Inject(method = "renderExperienceBar", at = @At("HEAD"), cancellable = true)
     public void renderExperienceBar(MatrixStack matrices, int x, CallbackInfo ci)
     {
+        if(config.shouldHideExp())
+            ci.cancel();
+
         if (!config.shouldShowExp())
             if(!getCameraPlayer().isInSneakingPose())
                 ci.cancel();
