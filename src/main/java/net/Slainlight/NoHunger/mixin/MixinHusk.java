@@ -18,22 +18,11 @@ extends ZombieEntity {
         super(entityType, world);
     }
 
-    @ModifyArg(method = "Lnet/minecraft/entity/mob/HuskEntity;tryAttack", 
+    @ModifyArg(method = "tryAttack",
                at = @At(value = "INVOKE", 
-               target = "Lnet/minecraft/entity/LivingEntity;addStatusEffect()Z"), index = 0)
+               target = "Lnet/minecraft/entity/LivingEntity;addStatusEffect(Lnet/minecraft/entity/effect/StatusEffectInstance;Lnet/minecraft/entity/Entity;)Z"), index = 0)
     StatusEffectInstance injected(StatusEffectInstance orig) {
         float f = this.world.getLocalDifficulty(this.getBlockPos()).getLocalDifficulty();
-        StatusEffectInstance inj = new StatusEffectInstance(StatusEffects.WEAKNESS, 90 * (int)f);
-        return inj;
+        return new StatusEffectInstance(StatusEffects.WEAKNESS, 90 * (int)f);
     }
-
-    // @Overwrite
-    // public boolean tryAttack(Entity target) {
-    //     boolean bl = super.tryAttack(target);
-    //     if (bl && this.getMainHandStack().isEmpty() && target instanceof LivingEntity) {
-    //         float f = this.world.getLocalDifficulty(this.getBlockPos()).getLocalDifficulty();
-    //         ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 90 * (int)f), this);
-    //     }
-    //     return bl;
-    // }
 }
