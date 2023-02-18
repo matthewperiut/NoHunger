@@ -7,7 +7,8 @@
     "MixinPlayerEntity",
     "MixinItem",
     "MixinItemSettings",
-    "MixinHusk"
+    "MixinHusk",
+    "MixinFoodComponents"
   ],
   "client": [
     "MixinInGameHud"
