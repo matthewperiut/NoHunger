@@ -45,6 +45,10 @@ public class MixinFoodComponents {
 
     @ModifyArgs(
             method = "<clinit>",
+            slice = @Slice(
+                    from = @At(value = "FIELD", opcode = Opcodes.PUTSTATIC, target = "Lnet/minecraft/item/FoodComponents;CARROT:Lnet/minecraft/item/FoodComponent;"),
+                    to = @At(value = "FIELD", opcode = Opcodes.PUTSTATIC, target = "Lnet/minecraft/item/FoodComponents;CHICKEN:Lnet/minecraft/item/FoodComponent;")
+            ),
             at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/effect/StatusEffectInstance;<init>(Lnet/minecraft/entity/effect/StatusEffect;II)V"),
             allow = 1
     )
