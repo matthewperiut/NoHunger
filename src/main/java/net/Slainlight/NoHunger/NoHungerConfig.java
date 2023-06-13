@@ -7,8 +7,8 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 @Config(name="nohunger")
 public class NoHungerConfig implements ConfigData
 {
-    boolean InstantEat = true;
-    boolean makeFoodUnstackable = true;
+    boolean InstantEat = false;
+    boolean makeFoodUnstackable = false;
     @Comment("(disables sneak to show in favor of always showing)")
     boolean showExp = false;
     @Comment("(disables sneak to show in favor of never showing)")
