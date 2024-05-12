@@ -1,5 +1,6 @@
 package net.Slainlight.NoHunger.mixin;
 
+import net.Slainlight.NoHunger.NoHungerConfigHandler;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
@@ -8,8 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import static net.Slainlight.NoHunger.Main.config;
 
 @Mixin(Item.Settings.class)
 public class MixinItemSettings
@@ -20,7 +19,7 @@ public class MixinItemSettings
     @Inject(at = @At("HEAD"), method = "food")
     private void onSetFoodComponent(FoodComponent foodComponent, CallbackInfoReturnable<Item.Settings> info)
     {
-        if (config.shouldMakeFoodUnstackable())
+        if (NoHungerConfigHandler.shouldMakeFoodUnstackable())
         {
             if (foodComponent != null)
             {
@@ -33,7 +32,7 @@ public class MixinItemSettings
     private int adjustMaxCount(int maxCount)
     {
 
-        if (config.shouldMakeFoodUnstackable())
+        if (NoHungerConfigHandler.shouldMakeFoodUnstackable())
         {
             if (foodComponent != null)
             {

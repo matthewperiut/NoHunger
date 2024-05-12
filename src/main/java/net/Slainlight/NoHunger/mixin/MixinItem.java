@@ -1,5 +1,6 @@
 package net.Slainlight.NoHunger.mixin;
 
+import net.Slainlight.NoHunger.NoHungerConfigHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -7,15 +8,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static net.Slainlight.NoHunger.Main.config;
-
 @Mixin(value = Item.class, priority = 500)
 public class MixinItem
 {
     @Inject(at = @At("HEAD"), method = "getMaxUseTime", cancellable = true)
     private void onGetMaxUseTime(ItemStack itemStack, CallbackInfoReturnable<Integer> info)
     {
-        if (config.shouldInstantEat())
+        if (NoHungerConfigHandler.shouldInstantEat())
         {
             if (itemStack.getItem().isFood())
             {

@@ -8,16 +8,10 @@ import net.fabricmc.loader.api.FabricLoader;
 public class Main implements ModInitializer
 {
 	public static int raised = 0;
-	public static NoHungerConfig config = getConfig();
-
-	public static NoHungerConfig getConfig()
-	{
-		AutoConfig.register(NoHungerConfig.class, JanksonConfigSerializer::new);
-		return AutoConfig.getConfigHolder(NoHungerConfig.class).getConfig();
-	}
 	@Override
 	public void onInitialize()
 	{
+		NoHungerConfigHandler.init();
 		if (FabricLoader.getInstance().isModLoaded("raised"))
 		{
 			raised = 2;
