@@ -58,25 +58,18 @@ public abstract class MixinInGameHud
         if (NoHungerConfigHandler.shouldHideExp())
             v_offset = 7;
 
-        if (y == 201 - raised)
+        if (getCameraPlayer().getArmor() > 0)
         {
-            if (getCameraPlayer().getArmor() > 0)
-            {
-                // Draw air bubbles (flipped)
-                context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, 191 - raised + v_offset, width, height);
-                return;
-            }
+            // Draw air bubbles (flipped)
+            context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, y - raised + v_offset - 10, width, height);
+            return;
         }
-
         context.drawGuiTexture(identifier, x, y + v_offset, width, height);
     }
 
     @Redirect(method = "renderArmor", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"), require = 0)
     private static void onDrawArmorTexture(DrawContext context, Identifier identifier, int x, int y, int width, int height)
     {
-        if (identifier == ARMOR_HALF_TEXTURE)
-            identifier = ARMOR_HALF_BACKWARDS_TEXTURE;
-
         int v_offset = MinecraftClient.getInstance().player.isInSneakingPose() ? 0 : 7;
         if (NoHungerConfigHandler.shouldShowExp())
             v_offset = 0;
@@ -84,14 +77,11 @@ public abstract class MixinInGameHud
             v_offset = 7;
 
         // Moves the armor bar down to where the hunger bar was.
-        if (y == 191 - raised)
-        {
-            // Draw Armor (flipped)
-            context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, 201 - raised + v_offset, width, height);
-            return;
-        }
+        if (identifier == ARMOR_HALF_TEXTURE)
+            identifier = ARMOR_HALF_BACKWARDS_TEXTURE;
 
-        context.drawGuiTexture(identifier, x, y + v_offset, width, height);
+        // Draw Armor (flipped)
+        context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, y - raised + v_offset + 10, width, height);
     }
 
     @Redirect(method = "renderMountHealth", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"), require = 0)
@@ -102,16 +92,13 @@ public abstract class MixinInGameHud
         if (NoHungerConfigHandler.shouldHideExp())
             v_offset = 7;
 
-        if (y == 201 - raised)
+        if (MinecraftClient.getInstance().player.getArmor() > 0)
         {
-            if (MinecraftClient.getInstance().player.getArmor() > 0)
-            {
-                // Draw mount bubbles (flipped)
-                context.drawGuiTexture(identifier, x - 1, y - 3, width, height);
-                return;
-            }
-            context.drawGuiTexture(identifier, x - 1, y + v_offset, width, height);
+            // Draw mount hearts
+            context.drawGuiTexture(identifier, x - 1, y - 3, width, height);
+            return;
         }
+        context.drawGuiTexture(identifier, x - 1, y + v_offset, width, height);
     }
 
     //@Redirect(method = "drawHeart", at = @At(value = "INVOKE",target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V"))

@@ -39,15 +39,12 @@ public abstract class MixinInGameHud {
         if (NoHungerConfigHandler.shouldHideExp())
             v_offset = 7;
 
-        if (y == 201 - raised)
+        if (MinecraftClient.getInstance().player.getArmor() > 0)
         {
-            if (MinecraftClient.getInstance().player.getArmor() > 0)
-            {
-                // Draw air bubbles (flipped)
-                context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, 191 - raised + v_offset, width, height);
-                return;
-            }
-            context.drawGuiTexture(identifier, x, y + v_offset, width, height);
+            // Draw air bubbles (flipped)
+            context.drawGuiTexture(identifier, (-1 * x) + context.getScaledWindowWidth() - 10, y - raised + v_offset + 10, width, height);
+            return;
         }
+        context.drawGuiTexture(identifier, x, y + v_offset, width, height);
     }
 }
