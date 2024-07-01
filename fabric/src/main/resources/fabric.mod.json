@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "nohunger",
+  "version": "${version}",
+  "name": "No Hunger",
+  "description": "This mod lets you play without worrying about hunger!\nWhen you eat you replenish HP",
+  "authors": [
+    "Slainlite",
+    "MrIbby"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/nohunger",
+    "issues": "https://github.com/matthewperiut/nohunger/issues",
+    "sources": "https://github.com/matthewperiut/nohunger"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.matthewperiut.nohunger.fabric.NoHungerFabric"
+    ],
+    "client": [
+      "com.matthewperiut.nohunger.fabric.NoHungerClientFabric"
+    ],
+    "modmenu": [
+      "com.matthewperiut.nohunger.fabric.NoHungerModMenu"
+    ]
+  },
+  "mixins": [
+    "nohunger.mixins.json",
+    "nohunger.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "fabric-api": "*",
+    "minecraft": ["1.21.*"],
+    "java": ">=21"
+  }
+}

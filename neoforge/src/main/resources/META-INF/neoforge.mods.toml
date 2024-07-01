@@ -1,0 +1,38 @@
+modLoader="javafml" #mandatory
+loaderVersion="[2,)" #mandatory
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "nohunger"
+version = "${version}"
+displayName = "No Hunger"
+authors = "Slainlite"
+description = '''
+This mod lets you play without worrying about hunger!
+When you eat you replenish HP
+'''
+logoFile = "icon.png"
+
+[[mixins]]
+config = "nohunger.mixins.json"
+[[mixins]]
+config = "nohunger.neoforge.mixins.json"
+
+[[dependencies.clay]]
+modId="minecraft"
+type="required"
+versionRange="[1.21)"
+
+[[dependencies.clay]]
+modId="neoforge"
+type="required"
+versionRange="[0,)"
+
+
+[[dependencies.clay]]
+modId = "geckolib"
+mandatory = true
+versionRange = "[4.0.0,)"
+ordering = "NONE"
+side = "BOTH"
